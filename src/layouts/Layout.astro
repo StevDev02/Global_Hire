@@ -1,0 +1,58 @@
+---
+import SEO from "../components/SEO.astro";
+import { ViewTransitions } from "astro:transitions";
+
+interface Props {
+  titulo_pagina: string;
+  descripcion_pagina: string;
+  fecha_publicacion: string;
+  keywords_pagina: string;
+}
+
+const {
+  titulo_pagina,
+  descripcion_pagina,
+  fecha_publicacion,
+  keywords_pagina,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es-MX" class="h-full antialiased motion-safe:scroll-smooth">
+  <head>
+    <ViewTransitions />
+    <SEO
+      titulo_pagina={titulo_pagina}
+      descripcion_pagina={descripcion_pagina}
+      fecha_publicacion={fecha_publicacion}
+      keywords_pagina={keywords_pagina}
+    />
+  </head>
+  <!-- Content -->
+  <body>
+    <!-- HEADER -->
+    <!-- SLOT -->
+    <slot />
+    <!-- SLOT -->
+
+    <!-- Styles -->
+    <style is:global>
+
+      @font-face {
+        font-family: "Poppins";
+        src: url("/fonts/Poppins-Regular.ttf") format("woff");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      html {
+        font-family: "Poppins", sans-serif;
+        overflow-x: hidden;
+        overflow-y: auto;
+        color-scheme: light;
+      }
+
+    </style>
+  </body>
+</html>
